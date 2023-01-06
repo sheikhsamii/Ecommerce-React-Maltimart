@@ -41,9 +41,9 @@
 //     toast.success("Added to Cart");
 //   };
 
-//   // useEffect(() => {
-//   //   window.scrollTo(0, 0);
-//   // }, [product]);
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [product]);
 //   return (
 //     <>
 //       <Helmet title={productName}>

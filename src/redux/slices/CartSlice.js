@@ -18,8 +18,8 @@ const CartSlice = createSlice({
       const tPriceArr = state.cartItems.map((el) => el.price * el.quantity);
       const totalPrice = tPriceArr.reduce((a, b) => a + b, 0);
       state.totalAmount = totalPrice;
+      state.totalQuantity++;
       toast.success("Added to Cart");
-
       // const existingItem = state.cartItems.find(
       //   (item) => item.id === newItem.id
       // );
