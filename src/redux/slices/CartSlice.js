@@ -86,7 +86,7 @@ const CartSlice = createSlice({
         console.log(totalPrice);
         state.totalAmount = updatedPrice;
       }
-      toast.success("Increased to Cart");
+      toast.info("Increased to Cart");
     },
 
     deleteItem: (state, action) => {
