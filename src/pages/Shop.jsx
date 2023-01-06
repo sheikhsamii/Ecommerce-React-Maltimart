@@ -4,13 +4,17 @@ import Helmet from "../Components/Helmet/Helmet";
 import CommonSection from "../Components/UI/CommonSection";
 import "../styles/shop.css";
 import products from "../assets/data/products";
-import ProductsList from "../Components/UI/ProductsList";
+// import ProductsList from "../Components/UI/ProductsList";
+import ProductCommon from "../Components/UI/ProductCommon";
 
 const Shop = () => {
   const [productsData, setProductsData] = useState(products);
 
   const handleFilter = (e) => {
     const filterValue = e.target.value.toLowerCase();
+    // if (filterValue === "") {
+    //   setProductsData(products);
+    // }
 
     if (filterValue === "sofa") {
       const filteredProducts = products.filter(
@@ -19,9 +23,6 @@ const Shop = () => {
       setProductsData(filteredProducts);
     }
 
-    if (filterValue === "") {
-      setProductsData(products);
-    }
     if (filterValue === "mobile") {
       const filteredProducts = products.filter(
         (item) => item.category === "mobile"
@@ -101,13 +102,13 @@ const Shop = () => {
         </Container>
       </section>
 
-      <section>
+      <section style={{ padding: 0, margin: 0 }}>
         <Container className="pt-0">
           <Row>
             {productsData.length === 0 ? (
               <h1 className="text-center fs-4">No Products Found!</h1>
             ) : (
-              <ProductsList data={productsData} />
+              <ProductCommon data={productsData} />
             )}
           </Row>
         </Container>

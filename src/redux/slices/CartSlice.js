@@ -20,37 +20,6 @@ const CartSlice = createSlice({
       state.totalAmount = totalPrice;
       state.totalQuantity++;
       toast.success("Added to Cart");
-      // const existingItem = state.cartItems.find(
-      //   (item) => item.id === newItem.id
-      // );
-
-      // state.totalQuantity++;
-      // if (!existingItem) {
-      //   // newItem.stock--;
-      //   state.cartItems.push({
-      //     id: newItem.id,
-      //     productName: newItem.productName,
-      //     imgUrl: newItem.imgUrl,
-      //     price: newItem.price,
-      //     quantity: 1,
-      //     totalPrice: newItem.price,
-      //     stock: newItem.stock,
-      //   });
-      //   toast.success("Added to Cart");
-      // } else {
-      //   if (existingItem.stock > 0) {
-      //     existingItem.quantity++;
-
-      //     existingItem.totalPrice =
-      //       Number(existingItem.totalPrice) + Number(newItem.price);
-      //     // existingItem.stock -= 1;
-      //     toast.success("Added to Cart");
-      //     state.totalQuantity++;
-      //   } else {
-      //     toast.error("Product Out Of Stock");
-      //   }
-
-      // }
     },
     addQuantityCart: (state, action) => {
       const isProduct = state.cartItems.find(
@@ -71,17 +40,6 @@ const CartSlice = createSlice({
         products[Index].tPrice = totalPrice;
         state.cartItems = products;
 
-        // const totalPrice = state.cartItems.reduce((a, b) => a + b.price, 0);
-        // state.totalAmount = totalPrice;
-
-        // const updatePrice = state.cartItems.reduce(
-        //   (total, item) => total + Number(item.price) * Number(item.quantity),
-        //   0
-        // );
-        // let arr = [1, 2, 3, 4];
-        // console.log(arr.reduce((a, b) => a + b, 0));
-
-        // console.log(tPrice);
         const updatedPrice = state.cartItems.reduce((a, b) => a + b.tPrice, 0);
         console.log(totalPrice);
         state.totalAmount = updatedPrice;
@@ -94,35 +52,16 @@ const CartSlice = createSlice({
       const existingItem = state.cartItems.find((item) => item.id === id);
       if (existingItem) {
         state.cartItems = state.cartItems.filter((item) => item.id !== id);
-        state.totalQuantity = state.totalQuantity - existingItem.quantity;
+        state.totalQuantity--;
       }
-      state.totalAmount = state.cartItems.reduce(
-        (total, item) => total + Number(item.tPrice) * Number(item.quantity),
-        0
-      );
+      const updatedPrice = state.cartItems.reduce((a, b) => a + b.tPrice, 0);
+      state.totalAmount = updatedPrice;
     },
-    // IncreaseCart: (state, action) => {
-    //   const ItemIndex = state.cartItems.findIndex(
-    //     (item) => item.id === action.payload
-    //   );
-    //   if (state.cartItems[ItemIndex].stock > 0) {
-    //     state.cartItems[ItemIndex].quantity += 1;
-    //     state.totalQuantity++;
-    //     state.cartItems[ItemIndex].stock--;
-    //     state.totalAmount = state.cartItems.reduce(
-    //       (total, item) =>
-    //         total + Number(item.totalPrice) * Number(item.quantity),
-    //       0
-    //     );
-    //   } else {
-    //     toast.error("Product Out Of Stock");
-    //   }
-    // },
+
     decreaseCart: (state, action) => {
       const ItemIndex = state.cartItems.findIndex(
         (item) => item.id === action.payload
       );
-      state.totalQuantity--;
       if (state.cartItems[ItemIndex].quantity > 1) {
         state.cartItems[ItemIndex].quantity -= 1;
         state.cartItems[ItemIndex].stock++;
@@ -137,16 +76,6 @@ const CartSlice = createSlice({
       const updatedPrice = updatedPriceArr.reduce((a, b) => a + b, 0);
       state.cartItems[ItemIndex].tPrice = updatedPrice;
       state.totalAmount = state.cartItems.reduce((a, b) => a + b.tPrice, 0);
-
-      // state.cartItems.tPrice = state.cartItems.price * state.cartItems.quantity;
-
-      //total = 0 , item = 200 => total = 200;
-
-      // state.totalAmount = state.cartItems.reduce(
-      //   (total, item) =>
-      //     total + Number(item.totalPrice) * Number(item.quantity),
-      //   0
-      // );
     },
   },
 });

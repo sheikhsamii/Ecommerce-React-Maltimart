@@ -12,6 +12,7 @@ import Cart from "../pages/Cart";
 // import products from "../assets/data/products";
 import ProductsList from "../Components/UI/ProductsList";
 import Shop from "../pages/Shop";
+import ProductDetails from "../pages/ProductDetails";
 
 const Routers = () => {
   // const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Routers = () => {
     <>
       <Routes>
         <Route path="/home" element={<ProductsList />} />
+        <Route path="shop/:id" element={<ProductDetails />} />
         <Route path="shop" element={<Shop />} />
         <Route path="cart" element={<Cart />} />
       </Routes>

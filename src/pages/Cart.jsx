@@ -96,8 +96,10 @@ const Tr = ({ item }) => {
     }
   };
   const deleteProduct = () => {
+    // dispatch(productActions.IncreaseStock(item.id, item.stock, item.quantity));
     dispatch(cartActions.deleteItem(item.id));
-    dispatch(productActions.IncreaseStock(item.id));
+    dispatch(productActions.stockOnDelete([item.id, item.quantity]));
+    console.log(item.quantity);
     toggle();
   };
   return (

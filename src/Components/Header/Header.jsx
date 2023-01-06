@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Container, Row } from "reactstrap";
 import "./Header.css";
 
@@ -25,26 +25,26 @@ const nav__links = [
 
 const Header = () => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  // const headerRef = useRef(null);
-  // const menuRef = useRef(null);
-  // const HandleStickyHeader = () => {
-  //   window.addEventListener("scroll", () => {
-  //     if (
-  //       document.body.scrollTop > 80 ||
-  //       document.documentElement.scrollTop > 80
-  //     ) {
-  //       headerRef.current.classList.add("sticky__header");
-  //     } else {
-  //       headerRef.current.classList.remove("sticky__header");
-  //     }
-  //   });
-  // };
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+  const HandleStickyHeader = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky__header");
+      } else {
+        headerRef.current.classList.remove("sticky__header");
+      }
+    });
+  };
 
-  // const menuToggle = () => menuRef.current.classList.toggle("active__menu");
+  const menuToggle = () => menuRef.current.classList.toggle("active__menu");
 
-  // useEffect(() => {
-  //   HandleStickyHeader();
-  // }, []);
+  useEffect(() => {
+    HandleStickyHeader();
+  }, []);
 
   return (
     <header className="header">
@@ -61,7 +61,7 @@ const Header = () => {
               </div>
             </div>
             {/* <div className="navigation" ref={menuRef} onClick={menuToggle}> */}
-            <div className="navigation">
+            <div className="navigation" ref={menuRef} onClick={menuToggle}>
               <ul className="menu">
                 {nav__links.map((item, index) => (
                   <li className="nav__item" key={index}>
@@ -98,8 +98,8 @@ const Header = () => {
                 />
               </span>
               <div className="mobile__menu">
-                {/* <span onClick={menuToggle}> */}
-                <span>
+                {/* <span > */}
+                <span onClick={menuToggle}>
                   <i class="ri-menu-line"></i>
                 </span>
               </div>
