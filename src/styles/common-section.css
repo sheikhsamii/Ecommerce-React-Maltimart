@@ -1,0 +1,14 @@
+.common__section {
+    background: linear-gradient(#000, #000), url('../assets/images/pexels-alexandra-folster-13986931.jpg') no-repeat center center;
+    background: cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.common__section h1 {
+
+    color: #fff;
+    font-weight: 600;
+}

@@ -1,0 +1,31 @@
+.table tr td img {
+
+    height: 80px !important;
+    height: 80px !important;
+    object-fit: contain;
+    margin-left: -30px;
+}
+
+.align__products {
+    padding: 3px !important;
+    padding-top: 40px !important;
+}
+
+
+td i {
+    cursor: pointer;
+}
+
+td {
+    margin: auto;
+    color: var(--primary-color);
+}
+
+td span i {
+    font-size: 1.1rem;
+}
+
+.ri-delete-bin-line {
+    color: red !important;
+    font-size: 1.2rem;
+}
